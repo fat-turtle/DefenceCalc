@@ -3,17 +3,47 @@
 
 #include <iostream>
 using namespace std;
-
-void defenceCalc(int* reducer){
-	*reducer -= *reducer * 70 / 100; // reduces damage by 70%
+void defCalc(int* defence) {
+	*defence -= *defence*70/100;
 }
 
 int main() {
-	int weaponDamage = 560;
-	int *pWeaponDamage = &weaponDamage;
-	defenceCalc(pWeaponDamage);
-	cout << weaponDamage << endl;
+	int weaponDamage;
+	bool answer = false;
+	while (answer == false) {
+		int weaponType;
+		cout << "What weapon would you like to choose? We have the Greatsword, the Rivers Of Blood, and the Blasphemous Blade\n";
+		cout << "type 1,2 or 3\n";
+		cin >> weaponType;
+		switch (weaponType)
+		{
+		case(1):
+			weaponDamage = 130;
+			answer = true;
+			break;
+		case(2):
+			weaponDamage = 90;
+			answer = true;
+			break;
+		case(3):
+			weaponDamage = 100;
+			answer = true;
+			break;
+		default:
+			cout << "you didnt type 1,2 or 3";
+			break;
+		}
+	}
+	int* pWeaponDamage = &weaponDamage;
+	defCalc(pWeaponDamage);
+	cout << weaponDamage << " damage was dealt";
+
+
+	return 0;
 }
+
+
+
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
